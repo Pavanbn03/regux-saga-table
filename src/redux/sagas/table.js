@@ -1,5 +1,5 @@
 import { put, takeLatest } from "redux-saga/effects";
-import { TABLE_ERROR, TABLE_LOADING, TABLE_SUCCESS } from "../Actions/table";
+import { DATA_ERROR, DATA_LOADING, DATA_SUCCESS } from "../Actions/table";
 import axios from "axios";
 
 function* fetchAsync() {
@@ -9,18 +9,18 @@ function* fetchAsync() {
       .then(({ data }) => {
         return data;
       });
-    yield put({ type: TABLE_SUCCESS, data: users });
+    yield put({ type: DATA_SUCCESS, data: users });
   } catch (e) {
-    yield put({ type: TABLE_ERROR, error: e.message });
+    yield put({ type: DATA_ERROR, error: e.message });
   }
 }
 
 export function* rootSaga() {
   // Allows concurrent fetches of users
-  // yield takeEvery(TABLE_LOADING, fetchUser);
+  // yield takeEvery(DATA_LOADING, fetchUser);
 
   // Does not allow concurrent fetches of users
-  yield takeLatest(TABLE_LOADING, fetchAsync);
+  yield takeLatest(DATA_LOADING, fetchAsync);
 }
 
 export default rootSaga;

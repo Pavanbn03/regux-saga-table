@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { connect } from "react-redux";
-import { loadUsers } from "../../redux/Actions/table";
+import { loadData } from "../../redux/Actions/table";
 import { Table } from "../../components/table";
 
 const Home = (props) => {
@@ -20,7 +20,7 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = {
-  loadUsers,
+  loadData,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Home);

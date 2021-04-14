@@ -1,7 +1,7 @@
-export const TABLE_LOADING = "TABLE_LOADING";
-export const TABLE_SUCCESS = "TABLE_SUCCESS";
-export const TABLE_ERROR = "TABLE_ERROR";
+export const DATA_LOADING = "DATA_LOADING";
+export const DATA_SUCCESS = "DATA_SUCCESS";
+export const DATA_ERROR = "DATA_ERROR";
 
-export const loadUsers = () => {
-  return { type: TABLE_LOADING };
+export const loadData = () => {
+  return { type: DATA_LOADING };
 };
