@@ -5,7 +5,7 @@ import { Table } from "../../components/table";
 
 const Home = (props) => {
   useEffect(() => {
-    props.loadUsers();
+    props.loadData();
   }, []);
 
   return (
