@@ -2,7 +2,7 @@ import { put, takeLatest } from "redux-saga/effects";
 import { DATA_ERROR, DATA_LOADING, DATA_SUCCESS } from "../Actions/table";
 import axios from "axios";
 
-function* fetchAsync() {
+function* getData() {
   try {
     const users = yield axios
       .get("http://607668380baf7c0017fa7f26.mockapi.io/data")
@@ -20,7 +20,7 @@ export function* rootSaga() {
   // yield takeEvery(DATA_LOADING, fetchUser);
 
   // Does not allow concurrent fetches of users
-  yield takeLatest(DATA_LOADING, fetchAsync);
+  yield takeLatest(DATA_LOADING, getData);
 }
 
 export default rootSaga;
