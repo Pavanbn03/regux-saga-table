@@ -1,33 +1,26 @@
-import { put, takeLatest, delay } from "redux-saga/effects";
-import {
-  LOAD_USERS_ERROR,
-  LOAD_USERS_LOADING,
-  LOAD_USERS_SUCCESS,
-} from "../Actions/actions";
-
-import data from "../../db";
+import { put, takeLatest } from "redux-saga/effects";
+import { TABLE_ERROR, TABLE_LOADING, TABLE_SUCCESS } from "../Actions/table";
+import axios from "axios";
 
 function* fetchAsync() {
-  yield delay(2000);
-  return data;
-}
-
-function* fetchUser() {
   try {
-    const users = yield fetchAsync();
-
-    yield put({ type: LOAD_USERS_SUCCESS, data: users });
+    const users = yield axios
+      .get("http://607668380baf7c0017fa7f26.mockapi.io/data")
+      .then(({ data }) => {
+        return data;
+      });
+    yield put({ type: TABLE_SUCCESS, data: users });
   } catch (e) {
-    yield put({ type: LOAD_USERS_ERROR, error: e.message });
+    yield put({ type: TABLE_ERROR, error: e.message });
   }
 }
 
 export function* rootSaga() {
   // Allows concurrent fetches of users
-  // yield takeEvery(LOAD_USERS_LOADING, fetchUser);
+  // yield takeEvery(TABLE_LOADING, fetchUser);
 
   // Does not allow concurrent fetches of users
-  yield takeLatest(LOAD_USERS_LOADING, fetchUser);
+  yield takeLatest(TABLE_LOADING, fetchAsync);
 }
 
 export default rootSaga;

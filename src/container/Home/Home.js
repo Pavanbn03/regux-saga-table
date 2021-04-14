@@ -1,9 +1,9 @@
 import React, { useEffect } from "react";
 import { connect } from "react-redux";
-import { loadUsers } from "../../redux/Actions/actions";
+import { loadUsers } from "../../redux/Actions/table";
 import { Table } from "../../components/table";
 
-const TableSaga = (props) => {
+const Home = (props) => {
   useEffect(() => {
     props.loadUsers();
   }, []);
@@ -14,13 +14,13 @@ const TableSaga = (props) => {
 };
 
 const mapStateToProps = (state) => ({
-  data: state.reduxSaga.data,
-  loading: state.reduxSaga.loading,
-  error: state.reduxSaga.error,
+  data: state.table.data,
+  loading: state.table.loading,
+  error: state.table.error,
 });
 
 const mapDispatchToProps = {
   loadUsers,
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(TableSaga);
+export default connect(mapStateToProps, mapDispatchToProps)(Home);

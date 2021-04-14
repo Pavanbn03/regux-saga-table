@@ -1,8 +1,8 @@
-import { default as reduxSaga } from "./Reducers/reducer";
+import { default as table } from "./Reducers/table";
 import { combineReducers } from "redux";
 
-const rootreducer = combineReducers({
-  reduxSaga,
+const rootReducer = combineReducers({
+  table,
 });
 
-export default rootreducer;
+export default rootReducer;

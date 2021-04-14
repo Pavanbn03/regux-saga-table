@@ -1,8 +1,4 @@
-import {
-  LOAD_USERS_ERROR,
-  LOAD_USERS_LOADING,
-  LOAD_USERS_SUCCESS,
-} from "../Actions/actions";
+import { TABLE_ERROR, TABLE_LOADING, TABLE_SUCCESS } from "../Actions/table";
 
 const initialState = {
   data: [],
@@ -12,21 +8,21 @@ const initialState = {
 
 export default function reduxSagaReducer(state = initialState, action) {
   switch (action.type) {
-    case LOAD_USERS_LOADING: {
+    case TABLE_LOADING: {
       return {
         ...state,
         loading: true,
         error: "",
       };
     }
-    case LOAD_USERS_SUCCESS: {
+    case TABLE_SUCCESS: {
       return {
         ...state,
         data: action.data,
         loading: false,
       };
     }
-    case LOAD_USERS_ERROR: {
+    case TABLE_ERROR: {
       return {
         ...state,
         loading: false,

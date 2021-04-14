@@ -8,7 +8,7 @@ const Table = (props) => {
   if (props.error) {
     return <S.Error>ERROR: {props.error}</S.Error>;
   }
-
+  console.log("props", props);
   return (
     <S.Table>
       <S.TableHead>
@@ -24,7 +24,8 @@ const Table = (props) => {
         </S.TableRow>
       </S.TableHead>
       <S.TableBody>
-        {props.data.map((value) => {
+        {props.data?.map((value) => {
+          debugger;
           return (
             <S.TableRow key={value.id}>
               <S.TableData>{value.scrip}</S.TableData>
